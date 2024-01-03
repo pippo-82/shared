@@ -1,0 +1,27 @@
+'
+Dim Jrn
+Set Jrn = CrsJournalScript
+Dim fileName, exportFolder, numberOfGroupsInFile
+
+' DO NOT CHANGE ANYTHING ABOVE THIS LINE ------------
+
+fileName = "XXX"
+exportFolder = "YYY"
+numberOfGroupsInFile = 1000
+
+' DO NOT CHANGE ANYTHING BELOW THIS LINE ------------
+
+  Jrn.Command "Ribbon"  , "Open an existing project , ID_REVIT_FILE_OPEN" 
+  Jrn.Data "File Name"  , "IDOK" , fileName
+		  
+For i = 0 to numberOfGroupsInFile - 1
+  Jrn.Command "Ribbon"  , "Save a loaded group , ID_SAVE_GROUP" 
+  Jrn.Data  "Save Group File Name"  , exportFolder & "Same as group name.rvt" 
+  Jrn.Data  "Save Group Index"  , i 
+  Jrn.Data  "Save Group Include Attached"  , "1" 
+  Jrn.Data  "Transaction Successful"  , "Create Type Previews" 
+  Jrn.Data  "Transaction Successful"  , "Save a loaded group" 
+  Jrn.Data  "Transaction Successful"  , "Save a loaded group" 
+Next
+
+  Jrn.Command "Internal"  , "Quit the application; prompts to save projects , ID_APP_EXIT" 
