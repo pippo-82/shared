@@ -1,2 +1,2 @@
 # shared
-Shared contents (productivity tools anf tips)
+Shared contents (productivity tools and tips)
